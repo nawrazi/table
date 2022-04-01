@@ -17,6 +17,7 @@ data class Standing (
     val rank: Long,
     val team: Team,
     val points: Long,
+    val all: All,
     val goalsDiff: Long,
 )
 
@@ -24,4 +25,8 @@ data class Team (
     val id: Long,
     val name: String,
     val logo: String
+)
+
+data class All (
+    val played: Long,
 )
