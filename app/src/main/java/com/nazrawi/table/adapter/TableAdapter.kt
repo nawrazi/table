@@ -1,4 +1,4 @@
-package com.nazrawi.table.ui
+package com.nazrawi.table.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -34,11 +34,8 @@ class TableAdapter(private val context: Context) : RecyclerView.Adapter<TableAda
 
     override fun onBindViewHolder(holder: ViewHolder, pos: Int) {
         table?.let {
-            var rankString = table!![pos].rank.toString()
-//            if (rankString.length == 1) rankString += ' '
-
             holder.teamName.text = table!![pos].team.name
-            holder.rank.text = rankString
+            holder.rank.text = table!![pos].rank.toString()
             holder.points.text = table!![pos].points.toString()
             holder.goalDiff.text = table!![pos].goalsDiff.toString()
             holder.matchesPlayed.text = table!![pos].all.played.toString()
