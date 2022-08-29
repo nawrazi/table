@@ -12,7 +12,7 @@ interface APIService {
         "x-rapidapi-host: v3.football.api-sports.io",
         "x-rapidapi-key: ${RetrofitClient.API_KEY}"
     )
-    @GET("standings?league=39&season=2021")
+    @GET("standings?league=39&season=2022")
     suspend fun getTable(): Response<APIResponse>
 
 }

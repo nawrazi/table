@@ -21,7 +21,7 @@ class TableActivity : AppCompatActivity() {
         binding = ActivityTableBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        tableViewModel.repo = APIRepository(applicationContext)
+        tableViewModel.repo = APIRepository()
 
         binding.teamList.let {
             val layoutManager = LinearLayoutManager(this)
