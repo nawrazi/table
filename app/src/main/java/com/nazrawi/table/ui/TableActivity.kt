@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nazrawi.table.ui.adapter.TableAdapter
 import com.nazrawi.table.databinding.ActivityTableBinding
-import com.nazrawi.table.data.repository.TableRepository
 import com.nazrawi.table.ui.viewmodel.TableViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

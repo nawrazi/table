@@ -7,7 +7,7 @@ import com.nazrawi.table.common.interceptors.AuthInterceptor
 import com.nazrawi.table.common.interceptors.NetworkInterceptor
 import com.nazrawi.table.common.interceptors.ResponseInterceptor
 import com.nazrawi.table.data.remote.api.TableService
-import com.nazrawi.table.data.repository.TableRepository
+import com.nazrawi.table.domain.repository.TableRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

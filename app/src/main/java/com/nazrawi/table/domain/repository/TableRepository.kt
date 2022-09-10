@@ -1,4 +1,4 @@
-package com.nazrawi.table.data.repository
+package com.nazrawi.table.domain.repository
 
 import com.nazrawi.table.data.remote.model.Standing
 import com.nazrawi.table.data.remote.api.TableService
