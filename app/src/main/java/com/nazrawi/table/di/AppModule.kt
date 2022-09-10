@@ -38,14 +38,15 @@ object AppModule {
         val networkInterceptor = NetworkInterceptor(context)
         val responseInterceptor = ResponseInterceptor()
         val authInterceptor = AuthInterceptor()
-        val logger = HttpLoggingInterceptor()
-        logger.setLevel(HttpLoggingInterceptor.Level.BODY)
+        val loggingInterceptor = HttpLoggingInterceptor().also {
+            it.setLevel(HttpLoggingInterceptor.Level.BODY)
+        }
 
         return OkHttpClient.Builder()
             .addInterceptor(networkInterceptor)
             .addInterceptor(responseInterceptor)
             .addInterceptor(authInterceptor)
-            .addInterceptor(logger)
+            .addInterceptor(loggingInterceptor)
             .build()
     }
 
