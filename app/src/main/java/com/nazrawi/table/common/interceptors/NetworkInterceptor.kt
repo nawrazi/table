@@ -1,11 +1,11 @@
-package com.nazrawi.table.common
+package com.nazrawi.table.common.interceptors
 
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import com.nazrawi.table.common.exceptions.NetworkException
 import okhttp3.Interceptor
 import okhttp3.Response
-import java.io.IOException
 
 class NetworkInterceptor(private val context: Context) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
@@ -24,10 +24,5 @@ class NetworkInterceptor(private val context: Context) : Interceptor {
         return capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
                 || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)
                 || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_VPN)
-    }
-
-    class NetworkException : IOException() {
-        override val message: String
-            get() = "No Internet Connection"
     }
 }

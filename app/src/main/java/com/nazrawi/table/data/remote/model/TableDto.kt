@@ -2,6 +2,7 @@ package com.nazrawi.table.data.remote.model
 
 data class TableDto (
     val errors: Any?,
+    val results: Int,
     val response: List<Response>
 )
 

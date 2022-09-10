@@ -3,7 +3,9 @@ package com.nazrawi.table.di
 import android.content.Context
 import com.google.gson.Gson
 import com.nazrawi.table.common.Constants
-import com.nazrawi.table.common.NetworkInterceptor
+import com.nazrawi.table.common.interceptors.AuthInterceptor
+import com.nazrawi.table.common.interceptors.NetworkInterceptor
+import com.nazrawi.table.common.interceptors.ResponseInterceptor
 import com.nazrawi.table.data.remote.api.TableService
 import com.nazrawi.table.data.repository.TableRepository
 import dagger.Module
@@ -12,9 +14,9 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import javax.inject.Singleton
 
 @Module
@@ -29,11 +31,18 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providesHttpClient(
-        @ApplicationContext context: Context,
-    ): OkHttpClient {
+    fun providesHttpClient(@ApplicationContext context: Context): OkHttpClient {
+        val networkInterceptor = NetworkInterceptor(context)
+        val responseInterceptor = ResponseInterceptor()
+        val authInterceptor = AuthInterceptor()
+        val logger = HttpLoggingInterceptor()
+        logger.setLevel(HttpLoggingInterceptor.Level.BODY)
+
         return OkHttpClient.Builder()
-            .addInterceptor(NetworkInterceptor(context))
+            .addInterceptor(networkInterceptor)
+            .addInterceptor(responseInterceptor)
+            .addInterceptor(authInterceptor)
+            .addInterceptor(logger)
             .build()
     }
 
