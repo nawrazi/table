@@ -51,6 +51,7 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1"
     implementation "androidx.fragment:fragment-ktx:1.5.2"
     implementation 'androidx.fragment:fragment-ktx:1.5.2'
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
 
     // network
     def retrofitVersion = "2.9.0"
@@ -66,4 +67,10 @@ dependencies {
     // glide
     def glideVersion = "4.13.2"
     implementation "com.github.bumptech.glide:glide:$glideVersion"
+
+    // database
+    def roomVersion = "2.4.3"
+    implementation "androidx.room:room-runtime:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
 }

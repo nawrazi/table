@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.nazrawi.table.databinding.TeamListItemBinding
-import com.nazrawi.table.data.remote.model.Standing
 import com.nazrawi.table.domain.model.Team
 
 class TableAdapter(private val context: Context) : RecyclerView.Adapter<TableAdapter.ViewHolder>() {
@@ -45,7 +44,7 @@ class TableAdapter(private val context: Context) : RecyclerView.Adapter<TableAda
     override fun getItemCount(): Int = table.size
 
     fun setTable(newTable: List<Team>) {
-        table = newTable
+        table = newTable.sortedBy { it.rank }
         notifyItemRangeChanged(0, table.size)
     }
 
