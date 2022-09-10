@@ -7,10 +7,10 @@ data class TableDto (
 )
 
 data class Response (
-    val league: League
+    val league: LeagueDto
 )
 
-data class League (
+data class LeagueDto(
     val standings: List<List<Standing>>
 )
 

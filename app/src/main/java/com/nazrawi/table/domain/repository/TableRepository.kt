@@ -8,6 +8,7 @@ import com.nazrawi.table.data.local.dao.TeamDao
 import com.nazrawi.table.data.mapper.toTeam
 import com.nazrawi.table.data.mapper.toTeamList
 import com.nazrawi.table.data.remote.api.TableService
+import com.nazrawi.table.domain.model.League
 import com.nazrawi.table.domain.model.Team
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -18,13 +19,13 @@ class TableRepository @Inject constructor(
     private val teamDao: TeamDao,
     private val localDatabase: LocalDatabase
 ) {
-    suspend fun getTable(): Flow<Resource<List<Team>>> {
+    suspend fun getTable(league: League): Flow<Resource<List<Team>>> {
         val result = networkBoundResource(
             query = {
                 teamDao.getTeams()
             },
             fetch = {
-                tableService.getTable().body()!!
+                tableService.getTable(league.id.toString()).body()!!
             },
             saveFetchResult = {
                 localDatabase.withTransaction {

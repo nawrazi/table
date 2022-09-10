@@ -35,7 +35,7 @@ class TableActivity : AppCompatActivity() {
         }
 
         tableViewModel.viewModelScope.launch {
-            tableViewModel.getTable().observe(this@TableActivity) {
+            tableViewModel.getPremierLeague().observe(this@TableActivity) {
                 when (it) {
                     is Resource.Loading -> {
                         binding.progressBar.visibility = View.VISIBLE
