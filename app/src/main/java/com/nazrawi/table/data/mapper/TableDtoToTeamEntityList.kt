@@ -6,6 +6,9 @@ import com.nazrawi.table.data.remote.model.TableDto
 fun TableDto.toTeamEntityList(): List<TeamEntity> {
     val teams = mutableListOf<TeamEntity>()
 
+    if (response.isEmpty() || response[0].league.standings.isEmpty())
+        return listOf()
+
     response[0].league.let { league ->
         league.standings[0].forEach {
             teams.add(

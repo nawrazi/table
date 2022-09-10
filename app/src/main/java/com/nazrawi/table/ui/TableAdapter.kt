@@ -1,4 +1,4 @@
-package com.nazrawi.table.ui.adapter
+package com.nazrawi.table.ui
 
 import android.content.Context
 import android.view.LayoutInflater

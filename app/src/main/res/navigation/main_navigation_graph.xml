@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_navigation_graph"
+    app:startDestination="@id/premierLeagueFragment">
+
+    <fragment
+        android:id="@+id/premierLeagueFragment"
+        android:name="com.nazrawi.table.ui.premier_league.PremierLeagueFragment"
+        android:label="@string/premier_league" />
+    <fragment
+        android:id="@+id/championshipFragment"
+        android:name="com.nazrawi.table.ui.championship.ChampionshipFragment"
+        android:label="@string/championship" />
+    <fragment
+        android:id="@+id/bundesligaFragment"
+        android:name="com.nazrawi.table.ui.bundesliga.BundesligaFragment"
+        android:label="@string/bundesliga" />
+    <fragment
+        android:id="@+id/laligaFragment"
+        android:name="com.nazrawi.table.ui.laliga.LaligaFragment"
+        android:label="@string/laliga" />
+    <fragment
+        android:id="@+id/league1Fragment"
+        android:name="com.nazrawi.table.ui.league_1.League1Fragment"
+        android:label="@string/league_1" />
+
+</navigation>

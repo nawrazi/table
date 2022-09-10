@@ -3,4 +3,11 @@
     <string name="label_matches_played">MP</string>
     <string name="label_goal_difference">GD</string>
     <string name="label_points">PTS</string>
+    <string name="premier_league">Premier League</string>
+    <string name="championship">EFL Championship</string>
+    <string name="laliga">La Liga</string>
+    <string name="bundesliga">Bundesliga</string>
+    <string name="league_1">League 1</string>
+    <string name="efl">EFL</string>
+    <string name="pl">PL</string>
 </resources>
