@@ -1,10 +1,10 @@
-package com.nazrawi.table.viewmodel
+package com.nazrawi.table.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nazrawi.table.model.Standing
-import com.nazrawi.table.repository.APIRepository
+import com.nazrawi.table.data.remote.model.Standing
+import com.nazrawi.table.data.repository.APIRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

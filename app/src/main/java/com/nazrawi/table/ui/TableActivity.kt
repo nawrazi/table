@@ -5,10 +5,10 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.nazrawi.table.adapter.TableAdapter
+import com.nazrawi.table.ui.adapter.TableAdapter
 import com.nazrawi.table.databinding.ActivityTableBinding
-import com.nazrawi.table.repository.APIRepository
-import com.nazrawi.table.viewmodel.TableViewModel
+import com.nazrawi.table.data.repository.APIRepository
+import com.nazrawi.table.ui.viewmodel.TableViewModel
 
 class TableActivity : AppCompatActivity() {
     private val tableViewModel by viewModels<TableViewModel>()

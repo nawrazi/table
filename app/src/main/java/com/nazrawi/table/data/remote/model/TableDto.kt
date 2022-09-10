@@ -1,6 +1,6 @@
-package com.nazrawi.table.model
+package com.nazrawi.table.data.remote.model
 
-data class APIResponse (
+data class TableDto (
     val errors: Any?,
     val response: List<Response>
 )
