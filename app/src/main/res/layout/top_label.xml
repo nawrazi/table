@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:gravity="center"
-        android:text="MP"
+        android:text="@string/label_matches_played"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/goal_diff_text"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:gravity="center"
-        android:text="GD"
+        android:text="@string/label_goal_difference"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/points_text"
         app:layout_constraintTop_toTopOf="parent" />
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="25dp"
         android:gravity="center"
-        android:text="PTS"
+        android:text="@string/label_points"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
