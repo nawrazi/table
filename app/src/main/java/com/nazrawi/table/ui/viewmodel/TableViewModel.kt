@@ -4,23 +4,21 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nazrawi.table.data.remote.model.Standing
-import com.nazrawi.table.data.repository.APIRepository
+import com.nazrawi.table.data.repository.TableRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class TableViewModel: ViewModel() {
-    var repo: APIRepository? = null
+@HiltViewModel
+class TableViewModel @Inject constructor(
+    private val tableRepo: TableRepository
+): ViewModel() {
     val liveTable = MutableLiveData<List<Standing>>()
 
     fun updateTable() {
-        repo?.let {
-            viewModelScope.launch(context = Dispatchers.IO) {
-                it.getTable().let {
-                    viewModelScope.launch {
-                        liveTable.value = it
-                    }
-                }
-            }
+        viewModelScope.launch {
+            liveTable.value = tableRepo.getTable()
         }
     }
 

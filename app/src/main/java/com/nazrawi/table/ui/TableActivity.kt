@@ -7,9 +7,11 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nazrawi.table.ui.adapter.TableAdapter
 import com.nazrawi.table.databinding.ActivityTableBinding
-import com.nazrawi.table.data.repository.APIRepository
+import com.nazrawi.table.data.repository.TableRepository
 import com.nazrawi.table.ui.viewmodel.TableViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class TableActivity : AppCompatActivity() {
     private val tableViewModel by viewModels<TableViewModel>()
     private lateinit var binding: ActivityTableBinding
@@ -20,8 +22,6 @@ class TableActivity : AppCompatActivity() {
 
         binding = ActivityTableBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        tableViewModel.repo = APIRepository()
 
         binding.teamList.let {
             val layoutManager = LinearLayoutManager(this)
