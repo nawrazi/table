@@ -11,5 +11,6 @@ fun TeamEntity.toTeam(): Team =
         played,
         rank,
         points,
-        goalsDiff
+        goalsDiff,
+        leagueId
     )

@@ -1,16 +1,20 @@
 package com.nazrawi.table.data.remote.model
 
-data class TableDto (
+import com.google.gson.annotations.SerializedName
+
+data class TableDto(
     val errors: Any?,
     val results: Int,
     val response: List<Response>
 )
 
-data class Response (
+data class Response(
     val league: LeagueDto
 )
 
 data class LeagueDto(
+    @SerializedName("id")
+    val leagueId: Int,
     val standings: List<List<Standing>>
 )
 

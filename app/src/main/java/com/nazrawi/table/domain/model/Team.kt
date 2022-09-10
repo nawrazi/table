@@ -7,5 +7,6 @@ data class Team(
     val played: Int,
     val rank: Int,
     val points: Int,
-    val goalsDiff: Int
+    val goalsDiff: Int,
+    val leagueId: Int
 )

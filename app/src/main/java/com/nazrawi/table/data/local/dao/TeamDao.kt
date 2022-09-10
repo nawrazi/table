@@ -12,9 +12,9 @@ interface TeamDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTeams(teams: List<TeamEntity>)
 
-    @Query("SELECT * FROM team")
-    fun getTeams(): Flow<List<TeamEntity>>
+    @Query("SELECT * FROM team WHERE leagueId = :id")
+    fun getTeams(id: Int): Flow<List<TeamEntity>>
 
-    @Query("DELETE FROM team")
-    suspend fun deleteAllTeams()
+    @Query("DELETE FROM team WHERE leagueId = :id")
+    suspend fun deleteAllTeams(id: Int)
 }

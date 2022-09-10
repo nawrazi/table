@@ -6,7 +6,7 @@ import com.nazrawi.table.common.resource.networkBoundResource
 import com.nazrawi.table.data.local.LocalDatabase
 import com.nazrawi.table.data.local.dao.TeamDao
 import com.nazrawi.table.data.mapper.toTeam
-import com.nazrawi.table.data.mapper.toTeamList
+import com.nazrawi.table.data.mapper.toTeamEntityList
 import com.nazrawi.table.data.remote.api.TableService
 import com.nazrawi.table.domain.model.League
 import com.nazrawi.table.domain.model.Team
@@ -22,15 +22,15 @@ class TableRepository @Inject constructor(
     suspend fun getTable(league: League): Flow<Resource<List<Team>>> {
         val result = networkBoundResource(
             query = {
-                teamDao.getTeams()
+                teamDao.getTeams(league.id)
             },
             fetch = {
                 tableService.getTable(league.id.toString()).body()!!
             },
             saveFetchResult = {
                 localDatabase.withTransaction {
-                    teamDao.deleteAllTeams()
-                    teamDao.insertTeams(it.toTeamList())
+                    teamDao.deleteAllTeams(league.id)
+                    teamDao.insertTeams(it.toTeamEntityList())
                 }
             },
             isEmpty = { it.isEmpty() }
