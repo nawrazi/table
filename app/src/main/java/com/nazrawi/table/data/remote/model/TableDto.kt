@@ -15,19 +15,19 @@ data class League (
 )
 
 data class Standing (
-    val rank: Long,
-    val team: Team,
-    val points: Long,
+    val rank: Int,
+    val team: TeamDto,
+    val points: Int,
     val all: All,
-    val goalsDiff: Long,
+    val goalsDiff: Int,
 )
 
-data class Team (
+data class TeamDto (
     val id: Long,
     val name: String,
     val logo: String
 )
 
 data class All (
-    val played: Long,
+    val played: Int,
 )

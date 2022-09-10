@@ -7,10 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.nazrawi.table.databinding.TeamListItemBinding
 import com.nazrawi.table.data.remote.model.Standing
+import com.nazrawi.table.domain.model.Team
 
 class TableAdapter(private val context: Context) : RecyclerView.Adapter<TableAdapter.ViewHolder>() {
 
-    private var table: List<Standing>? = null
+    private var table: List<Team> = listOf()
 
     class ViewHolder(binding: TeamListItemBinding) : RecyclerView.ViewHolder(binding.root) {
         val teamName = binding.teamNameText
@@ -32,19 +33,20 @@ class TableAdapter(private val context: Context) : RecyclerView.Adapter<TableAda
     }
 
     override fun onBindViewHolder(holder: ViewHolder, pos: Int) {
-        holder.teamName.text = table!![pos].team.name
-        holder.rank.text = table!![pos].rank.toString()
-        holder.points.text = table!![pos].points.toString()
-        holder.goalDiff.text = table!![pos].goalsDiff.toString()
-        holder.matchesPlayed.text = table!![pos].all.played.toString()
-        Glide.with(context).load(table!![pos].team.logo).into(holder.logoImage)
+        val team = table[pos]
+        holder.teamName.text = team.name
+        holder.rank.text = team.rank.toString()
+        holder.points.text = team.points.toString()
+        holder.goalDiff.text = team.goalsDiff.toString()
+        holder.matchesPlayed.text = team.played.toString()
+        Glide.with(context).load(team.logo).into(holder.logoImage)
     }
 
-    override fun getItemCount(): Int = table?.size ?: 0
+    override fun getItemCount(): Int = table.size
 
-    fun setTable(newTable: List<Standing>) {
+    fun setTable(newTable: List<Team>) {
         table = newTable
-        notifyDataSetChanged()
+        notifyItemRangeChanged(0, table.size)
     }
 
 }
