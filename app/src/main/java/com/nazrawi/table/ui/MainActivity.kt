@@ -18,14 +18,12 @@ class MainActivity : AppCompatActivity() {
 
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.mainActivityToolbar)
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.main_activity_nav_host) as NavHostFragment
         val navController = navHostFragment.navController
 
-        binding.mainActivityBottomNav.setupWithNavController(navController)
-
-        setSupportActionBar(binding.mainActivityToolbar)
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.premierLeagueFragment,
@@ -36,6 +34,7 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
+        binding.mainActivityBottomNav.setupWithNavController(navController)
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
