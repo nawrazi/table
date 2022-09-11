@@ -13,10 +13,6 @@
         android:name="com.nazrawi.table.ui.championship.ChampionshipFragment"
         android:label="@string/championship" />
     <fragment
-        android:id="@+id/bundesligaFragment"
-        android:name="com.nazrawi.table.ui.bundesliga.BundesligaFragment"
-        android:label="@string/bundesliga" />
-    <fragment
         android:id="@+id/laligaFragment"
         android:name="com.nazrawi.table.ui.laliga.LaligaFragment"
         android:label="@string/laliga" />
@@ -24,5 +20,9 @@
         android:id="@+id/league1Fragment"
         android:name="com.nazrawi.table.ui.league_1.League1Fragment"
         android:label="@string/league_1" />
+    <fragment
+        android:id="@+id/bundesligaFragment"
+        android:name="com.nazrawi.table.ui.bundesliga.BundesligaFragment"
+        android:label="@string/bundesliga" />
 
 </navigation>

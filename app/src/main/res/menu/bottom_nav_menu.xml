@@ -1,24 +1,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/premierLeagueFragment"
+        android:icon="@drawable/ic_premier_league"
+        android:title="@string/premier_league" />
+    <item
         android:id="@+id/championshipFragment"
         android:icon="@drawable/ic_championship"
-        android:title="@string/efl" />
+        android:title="@string/championship" />
     <item
         android:id="@+id/laligaFragment"
         android:icon="@drawable/ic_laliga"
         android:title="@string/laliga" />
     <item
-        android:id="@+id/premierLeagueFragment"
-        android:icon="@drawable/ic_premier_league"
-        android:title="@string/pl" />
+        android:id="@+id/league1Fragment"
+        android:icon="@drawable/ic_league_1"
+        android:title="@string/league_1" />
     <item
         android:id="@+id/bundesligaFragment"
         android:icon="@drawable/ic_bundesliga"
         android:title="@string/bundesliga" />
-    <item
-        android:id="@+id/league1Fragment"
-        android:icon="@drawable/ic_league_1"
-        android:title="@string/league_1" />
 
 </menu>

@@ -9,6 +9,8 @@
         <item name="colorSecondary">@color/charcoal</item>
         <item name="colorSecondaryVariant">@color/charcoal</item>
         <item name="colorOnSecondary">@color/white</item>
+        <!-- Tertiary brand color. -->
+        <item name="colorTertiary">@color/grey</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->

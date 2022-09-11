@@ -1,7 +1,6 @@
 package com.nazrawi.table.ui
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -13,7 +12,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private val tableViewModel by viewModels<TableViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +35,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.league1Fragment
             )
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
 
+        setupActionBarWithNavController(navController, appBarConfiguration)
     }
+
 }
