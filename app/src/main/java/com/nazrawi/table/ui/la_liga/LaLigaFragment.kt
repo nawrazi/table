@@ -1,4 +1,4 @@
-package com.nazrawi.table.ui.laliga
+package com.nazrawi.table.ui.la_liga
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.nazrawi.table.R
 import com.nazrawi.table.common.resource.Resource
-import com.nazrawi.table.databinding.FragmentLaligaBinding
+import com.nazrawi.table.databinding.FragmentLaLigaBinding
 import com.nazrawi.table.ui.MainActivity
 import com.nazrawi.table.ui.TableAdapter
 import com.nazrawi.table.ui.TableViewModel
@@ -20,8 +20,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class LaligaFragment : Fragment() {
-    private var _binding: FragmentLaligaBinding? = null
+class LaLigaFragment : Fragment() {
+    private var _binding: FragmentLaLigaBinding? = null
     private val binding get() = _binding!!
     private val tableViewModel by viewModels<TableViewModel>()
 
@@ -29,7 +29,7 @@ class LaligaFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentLaligaBinding.inflate(inflater, container, false)
+        _binding = FragmentLaLigaBinding.inflate(inflater, container, false)
 
         val tableAdapter = TableAdapter(requireContext())
         val layoutManager = LinearLayoutManager(context)
@@ -57,7 +57,7 @@ class LaligaFragment : Fragment() {
                         Snackbar
                             .make(
                                 activity.findViewById(android.R.id.content),
-                                it.message ?: "Error occurred",
+                                it.errMsg,
                                 Snackbar.LENGTH_LONG
                             )
                             .setAnchorView(activity.findViewById(R.id.main_activity_bottom_nav))

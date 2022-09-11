@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.premierLeagueFragment,
                 R.id.championshipFragment,
-                R.id.laligaFragment,
+                R.id.laLigaFragment,
                 R.id.bundesligaFragment,
                 R.id.league1Fragment
             )

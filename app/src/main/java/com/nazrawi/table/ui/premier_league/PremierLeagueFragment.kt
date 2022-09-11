@@ -57,7 +57,7 @@ class PremierLeagueFragment : Fragment() {
                         Snackbar
                             .make(
                                 activity.findViewById(android.R.id.content),
-                                it.message ?: "Error occurred",
+                                it.errMsg,
                                 Snackbar.LENGTH_LONG
                             )
                             .setAnchorView(activity.findViewById(R.id.main_activity_bottom_nav))

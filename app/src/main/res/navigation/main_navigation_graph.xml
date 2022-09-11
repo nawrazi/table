@@ -13,9 +13,9 @@
         android:name="com.nazrawi.table.ui.championship.ChampionshipFragment"
         android:label="@string/championship" />
     <fragment
-        android:id="@+id/laligaFragment"
-        android:name="com.nazrawi.table.ui.laliga.LaligaFragment"
-        android:label="@string/laliga" />
+        android:id="@+id/laLigaFragment"
+        android:name="com.nazrawi.table.ui.la_liga.LaLigaFragment"
+        android:label="@string/la_liga" />
     <fragment
         android:id="@+id/league1Fragment"
         android:name="com.nazrawi.table.ui.league_1.League1Fragment"
