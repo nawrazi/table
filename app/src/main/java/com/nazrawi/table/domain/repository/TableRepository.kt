@@ -21,12 +21,8 @@ class TableRepository @Inject constructor(
 ) {
     suspend fun getTable(league: League): Flow<Resource<List<Team>>> {
         val result = networkBoundResource(
-            query = {
-                teamDao.getTeams(league.id)
-            },
-            fetch = {
-                tableService.getTable(league.id.toString()).body()!!
-            },
+            query = { teamDao.getTeams(league.id) },
+            fetch = { tableService.getTable(league.id.toString()).body()!! },
             saveFetchResult = {
                 localDatabase.withTransaction {
                     teamDao.deleteAllTeams(league.id)

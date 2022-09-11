@@ -4,16 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.Snackbar
-import com.nazrawi.table.R
 import com.nazrawi.table.common.resource.Resource
 import com.nazrawi.table.databinding.FragmentPremierLeagueBinding
-import com.nazrawi.table.ui.MainActivity
 import com.nazrawi.table.ui.TableAdapter
 import com.nazrawi.table.ui.TableViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -52,16 +50,8 @@ class PremierLeagueFragment : Fragment() {
                     }
                     is Resource.Error -> {
                         binding.progressBar.visibility = View.GONE
-                        tableAdapter.setTable(it.value!!)
-                        val activity = requireContext() as MainActivity
-                        Snackbar
-                            .make(
-                                activity.findViewById(android.R.id.content),
-                                it.errMsg,
-                                Snackbar.LENGTH_LONG
-                            )
-                            .setAnchorView(activity.findViewById(R.id.main_activity_bottom_nav))
-                            .show()
+                        it.value?.let { teams -> tableAdapter.setTable(teams) }
+                        Toast.makeText(context, it.errMsg, Toast.LENGTH_SHORT).show()
                     }
                 }
             }
