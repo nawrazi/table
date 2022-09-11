@@ -43,14 +43,20 @@ class PremierLeagueFragment : Fragment() {
                 when (it) {
                     is Resource.Loading -> {
                         binding.progressBar.visibility = View.VISIBLE
+                        binding.tableTitle.root.visibility = View.GONE
                     }
                     is Resource.Success -> {
                         binding.progressBar.visibility = View.GONE
+                        binding.tableTitle.root.visibility = View.VISIBLE
                         tableAdapter.setTable(it.value!!)
                     }
                     is Resource.Error -> {
                         binding.progressBar.visibility = View.GONE
-                        it.value?.let { teams -> tableAdapter.setTable(teams) }
+                        it.value?.let { teams ->
+                            tableAdapter.setTable(teams)
+                            if (teams.isEmpty())
+                                binding.tableTitle.root.visibility = View.GONE
+                        }
                         Toast.makeText(context, it.errMsg, Toast.LENGTH_SHORT).show()
                     }
                 }
