@@ -21,12 +21,12 @@ class TableRepository @Inject constructor(
 ) {
     suspend fun getTable(league: League): Flow<Resource<List<Team>>> {
         val result = networkBoundResource(
-            query = { teamDao.getTeams(league.id) },
+            query = { teamDao.getTable(league.id) },
             fetch = { tableService.getTable(league.id.toString()).body()!! },
             saveFetchResult = {
                 localDatabase.withTransaction {
-                    teamDao.deleteAllTeams(league.id)
-                    teamDao.insertTeams(it.toTeamEntityList())
+                    teamDao.deleteTable(league.id)
+                    teamDao.insertTable(it.toTeamEntityList())
                 }
             },
             isEmpty = { it.isEmpty() }
@@ -41,10 +41,7 @@ class TableRepository @Inject constructor(
                     Resource.Success(it.value!!.map { teamEntity -> teamEntity.toTeam() })
                 }
                 is Resource.Error -> {
-                    Resource.Error(
-                        it.message,
-                        it.value!!.map { teamEntity -> teamEntity.toTeam() }
-                    )
+                    Resource.Error(it.message, it.value!!.map { teamEntity -> teamEntity.toTeam() })
                 }
             }
         }
