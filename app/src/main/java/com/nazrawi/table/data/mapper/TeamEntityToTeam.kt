@@ -5,12 +5,10 @@ import com.nazrawi.table.domain.model.Team
 
 fun TeamEntity.toTeam(): Team =
     Team(
-        id,
         name,
         logo,
         played,
         rank,
         points,
-        goalsDiff,
-        leagueId
+        goalsDiff
     )
