@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.nazrawi.table.databinding.TeamListItemBinding
+import com.nazrawi.table.databinding.ListItemTeamBinding
 import com.nazrawi.table.domain.model.Team
 
 class TableAdapter(private val context: Context) : RecyclerView.Adapter<TableAdapter.ViewHolder>() {
 
     private var table: List<Team> = listOf()
 
-    class ViewHolder(binding: TeamListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(binding: ListItemTeamBinding) : RecyclerView.ViewHolder(binding.root) {
         val teamName = binding.teamNameText
         val rank = binding.teamRankText
         val points = binding.pointsText
@@ -23,7 +23,7 @@ class TableAdapter(private val context: Context) : RecyclerView.Adapter<TableAda
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            TeamListItemBinding.inflate(
+            ListItemTeamBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

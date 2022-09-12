@@ -13,11 +13,17 @@
         <item name="colorTertiary">@color/grey</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <!-- Font -->
+        <item name="android:fontFamily">@font/inter</item>
     </style>
 
     <style name="Theme.Table.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+    <style name="textStyle">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body2</item>
+    </style>
+
 </resources>
