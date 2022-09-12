@@ -12,11 +12,14 @@ class ResponseInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val builder = chain.request().newBuilder()
         val result = chain.proceed(builder.build())
-        val responseType: Type = object : TypeToken<TableDto>() {}.type
-        val serializedResponse: TableDto = Gson().fromJson(result.body!!.string(), responseType)
 
-        if (!result.isSuccessful || serializedResponse.results == 0)
-            throw APIException()
+        if (!result.isSuccessful) {
+            val responseType: Type = object : TypeToken<TableDto>() {}.type
+            val serializedResponse: TableDto = Gson().fromJson(result.body!!.string(), responseType)
+
+            if (serializedResponse.results == 0)
+                throw APIException()
+        }
 
         return result
     }
