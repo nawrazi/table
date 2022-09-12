@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.nazrawi.table.R
 import com.nazrawi.table.databinding.ListItemTeamBinding
 import com.nazrawi.table.domain.model.Team
 
@@ -38,7 +39,7 @@ class TableAdapter(private val context: Context) : RecyclerView.Adapter<TableAda
         holder.points.text = team.points.toString()
         holder.goalDiff.text = team.goalsDiff.toString()
         holder.matchesPlayed.text = team.played.toString()
-        Glide.with(context).load(team.logo).into(holder.logoImage)
+        Glide.with(context).load(team.logo).placeholder(R.drawable.ic_shield).into(holder.logoImage)
     }
 
     override fun getItemCount(): Int = table.size
