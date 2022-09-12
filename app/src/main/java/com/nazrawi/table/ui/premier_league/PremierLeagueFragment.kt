@@ -42,23 +42,23 @@ class PremierLeagueFragment : Fragment() {
             tableViewModel.getPremierLeague().observe(viewLifecycleOwner) {
                 when (it) {
                     is Resource.Loading -> {
-                        binding.progressBar.visibility = View.VISIBLE
+                        binding.progress.progressBar.visibility = View.VISIBLE
                         binding.tableTitle.root.visibility = View.GONE
-                        binding.errorImage.visibility = View.GONE
+                        binding.progress.errorImage.visibility = View.GONE
                     }
                     is Resource.Success -> {
-                        binding.progressBar.visibility = View.GONE
+                        binding.progress.progressBar.visibility = View.GONE
                         binding.tableTitle.root.visibility = View.VISIBLE
-                        binding.errorImage.visibility = View.GONE
+                        binding.progress.errorImage.visibility = View.GONE
                         tableAdapter.setTable(it.value!!)
                     }
                     is Resource.Error -> {
-                        binding.progressBar.visibility = View.GONE
+                        binding.progress.progressBar.visibility = View.GONE
                         it.value?.let { teams ->
                             tableAdapter.setTable(teams)
                             if (teams.isEmpty()) {
                                 binding.tableTitle.root.visibility = View.GONE
-                                binding.errorImage.visibility = View.VISIBLE
+                                binding.progress.errorImage.visibility = View.VISIBLE
                             }
                         }
                         Toast.makeText(context, it.errMsg, Toast.LENGTH_SHORT).show()
