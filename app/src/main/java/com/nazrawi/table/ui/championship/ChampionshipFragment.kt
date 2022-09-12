@@ -14,6 +14,8 @@ import com.nazrawi.table.common.resource.Resource
 import com.nazrawi.table.databinding.FragmentChampionshipBinding
 import com.nazrawi.table.ui.TableAdapter
 import com.nazrawi.table.ui.TableViewModel
+import com.nazrawi.table.utils.hide
+import com.nazrawi.table.utils.show
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -42,23 +44,23 @@ class ChampionshipFragment : Fragment() {
             tableViewModel.getChampionship().observe(viewLifecycleOwner) {
                 when (it) {
                     is Resource.Loading -> {
-                        binding.progress.progressBar.visibility = View.VISIBLE
-                        binding.tableTitle.root.visibility = View.GONE
-                        binding.progress.errorImage.visibility = View.GONE
+                        binding.progress.progressBar.show()
+                        binding.tableTitle.root.hide()
+                        binding.progress.errorImage.hide()
                     }
                     is Resource.Success -> {
-                        binding.progress.progressBar.visibility = View.GONE
-                        binding.tableTitle.root.visibility = View.VISIBLE
-                        binding.progress.errorImage.visibility = View.GONE
+                        binding.progress.progressBar.hide()
+                        binding.tableTitle.root.show()
+                        binding.progress.errorImage.hide()
                         tableAdapter.setTable(it.value!!)
                     }
                     is Resource.Error -> {
-                        binding.progress.progressBar.visibility = View.GONE
+                        binding.progress.progressBar.hide()
                         it.value?.let { teams ->
                             tableAdapter.setTable(teams)
                             if (teams.isEmpty()) {
-                                binding.tableTitle.root.visibility = View.GONE
-                                binding.progress.errorImage.visibility = View.VISIBLE
+                                binding.tableTitle.root.hide()
+                                binding.progress.errorImage.show()
                             }
                         }
                         Toast.makeText(context, it.errMsg, Toast.LENGTH_SHORT).show()
