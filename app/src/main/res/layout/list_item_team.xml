@@ -10,7 +10,7 @@
         android:id="@+id/team_rank_text"
         android:layout_width="@dimen/number_width"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/edge_margins"
+        android:layout_marginStart="6dp"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
