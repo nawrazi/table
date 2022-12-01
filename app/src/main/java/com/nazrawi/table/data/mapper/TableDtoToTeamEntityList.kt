@@ -1,30 +1,16 @@
 package com.nazrawi.table.data.mapper
 
 import com.nazrawi.table.data.local.entity.TeamEntity
-import com.nazrawi.table.data.remote.model.TableDto
+import com.nazrawi.table.data.remote.model.TeamDto
 
-fun TableDto.toTeamEntityList(): List<TeamEntity> {
-    val teams = mutableListOf<TeamEntity>()
-
-    if (response.isEmpty() || response[0].league.standings.isEmpty())
-        return listOf()
-
-    response[0].league.let { league ->
-        league.standings[0].forEach {
-            teams.add(
-                TeamEntity(
-                    it.team.id,
-                    it.team.name,
-                    it.team.logo,
-                    it.all.played,
-                    it.rank,
-                    it.points,
-                    it.goalsDiff,
-                    league.leagueId
-                )
-            )
-        }
-    }
-
-    return teams
-}
+fun TeamDto.toTeamEntity(): TeamEntity =
+    TeamEntity(
+        id = this.id,
+        name = this.name,
+        logo = this.logo,
+        played = this.matches,
+        rank = this.rank,
+        points = this.points,
+        goalsDiff = this.goals,
+        leagueId = this.leagueId
+    )

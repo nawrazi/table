@@ -63,11 +63,10 @@ object AppModule {
     @Singleton
     @Provides
     fun provideDatabase(@ApplicationContext context: Context): LocalDatabase {
-        return Room.databaseBuilder(
-            context,
-            LocalDatabase::class.java,
-            Constants.DATABASE_NAME
-        ).build()
+        return Room
+            .databaseBuilder(context, LocalDatabase::class.java, Constants.DATABASE_NAME)
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
     @Provides

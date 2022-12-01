@@ -37,7 +37,7 @@ class TableAdapter(private val context: Context) : RecyclerView.Adapter<TableAda
         holder.teamName.text = team.name
         holder.rank.text = team.rank.toString()
         holder.points.text = team.points.toString()
-        holder.goalDiff.text = team.goalsDiff.toString()
+        holder.goalDiff.text = team.goalsDiff
         holder.matchesPlayed.text = team.played.toString()
         Glide.with(context).load(team.logo).placeholder(R.drawable.ic_shield).into(holder.logoImage)
     }

@@ -6,7 +6,7 @@ import com.nazrawi.table.common.resource.networkBoundResource
 import com.nazrawi.table.data.local.LocalDatabase
 import com.nazrawi.table.data.local.dao.TeamDao
 import com.nazrawi.table.data.mapper.toTeam
-import com.nazrawi.table.data.mapper.toTeamEntityList
+import com.nazrawi.table.data.mapper.toTeamEntity
 import com.nazrawi.table.data.remote.api.TableService
 import com.nazrawi.table.domain.model.League
 import com.nazrawi.table.domain.model.Team
@@ -26,7 +26,7 @@ class TableRepository @Inject constructor(
             saveFetchResult = {
                 localDatabase.withTransaction {
                     teamDao.deleteTable(league.id)
-                    teamDao.insertTable(it.toTeamEntityList())
+                    teamDao.insertTable(it.data.table.map { teamDto -> teamDto.toTeamEntity() })
                 }
             },
             isEmpty = { it.isEmpty() }

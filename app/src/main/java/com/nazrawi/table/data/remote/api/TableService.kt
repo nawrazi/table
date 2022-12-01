@@ -1,14 +1,13 @@
 package com.nazrawi.table.data.remote.api
 
-import com.nazrawi.table.common.Constants
-import com.nazrawi.table.data.remote.model.TableDto
+import com.nazrawi.table.data.remote.model.TableResponse
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.Path
 
 interface TableService {
 
-    @GET("standings?season=${Constants.SEASON}")
-    suspend fun getTable(@Query("league") league: String): Response<TableDto>
+    @GET("table/{league}")
+    suspend fun getTable(@Path("league") league: String): Response<TableResponse>
 
 }

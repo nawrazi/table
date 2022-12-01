@@ -3,7 +3,7 @@ package com.nazrawi.table.common.interceptors
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.nazrawi.table.common.exceptions.APIException
-import com.nazrawi.table.data.remote.model.TableDto
+import com.nazrawi.table.data.remote.model.TableResponse
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.lang.reflect.Type
@@ -14,11 +14,17 @@ class ResponseInterceptor : Interceptor {
         val result = chain.proceed(builder.build())
 
         if (!result.isSuccessful) {
-            val responseType: Type = object : TypeToken<TableDto>() {}.type
-            val serializedResponse: TableDto = Gson().fromJson(result.body!!.string(), responseType)
+            val responseType: Type = object : TypeToken<TableResponse>() {}.type
+            val serializedResponse: TableResponse? =
+                Gson().fromJson(result.body?.string(), responseType)
 
-            if (serializedResponse.results == 0)
-                throw APIException()
+            if (serializedResponse?.status == null) {
+                throw APIException("Unknown Error")
+            }
+
+            if (result.code == 500) {
+                throw APIException("Server Error")
+            }
         }
 
         return result
