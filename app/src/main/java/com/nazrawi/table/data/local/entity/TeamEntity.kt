@@ -6,12 +6,12 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "team")
 data class TeamEntity(
     @PrimaryKey
-    val id: Long,
+    val id: String,
     val name: String,
     val logo: String,
     val played: Int,
     val rank: Int,
     val points: Int,
-    val goalsDiff: Int,
+    val goalsDiff: String,
     val leagueId: Int
 )
